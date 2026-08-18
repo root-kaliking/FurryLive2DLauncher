@@ -5,9 +5,9 @@ import android.os.Handler
 import android.os.Looper
 import android.service.wallpaper.WallpaperService
 import android.view.SurfaceHolder
+import android.view.View
 import com.furry.live2dlauncher.core.Prefs
 import com.furry.live2dlauncher.core.SceneType
-import com.furry.live2dlauncher.core.WallpaperType
 
 /**
  * 动态壁纸服务。
@@ -28,22 +28,35 @@ class LiveWallpaperService : WallpaperService() {
         private val handler = Handler(Looper.getMainLooper())
         private var sceneView: SceneWallpaperView? = null
         private var visible = false
+        private var surfaceHolder: SurfaceHolder? = null
+        private var targetFps = 24
+
         private val frameRunnable = object : Runnable {
             override fun run() {
                 if (!visible) return
-                sceneView?.invalidate()
+                drawFrame()
                 handler.postDelayed(this, 1000L / targetFps)
             }
         }
-        private var targetFps = 24
 
         override fun onCreate(surfaceHolder: SurfaceHolder) {
             super.onCreate(surfaceHolder)
+            this.surfaceHolder = surfaceHolder
             val cfg = Prefs.loadConfig()
             targetFps = cfg.wallpaperFps
             sceneView = SceneWallpaperView(this@LiveWallpaperService).apply {
                 setScene(cfg.pages.getOrNull(0)?.sceneType ?: SceneType.STARFIELD)
             }
+        }
+
+        override fun onSurfaceCreated(holder: SurfaceHolder) {
+            super.onSurfaceCreated(holder)
+            this.surfaceHolder = holder
+        }
+
+        override fun onSurfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
+            super.onSurfaceChanged(holder, format, width, height)
+            this.surfaceHolder = holder
         }
 
         override fun onVisibilityChanged(visible: Boolean) {
@@ -55,26 +68,29 @@ class LiveWallpaperService : WallpaperService() {
             }
         }
 
-        override fun onSurfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
-            super.onSurfaceChanged(holder, format, width, height)
-        }
-
-        override fun onDraw(surfaceHolder: SurfaceHolder) {
+        private fun drawFrame() {
+            val holder = surfaceHolder ?: return
             val canvas: Canvas = try {
-                surfaceHolder.lockCanvas()
+                holder.lockCanvas()
             } catch (e: Exception) {
                 return
             }
             canvas.drawColor(0xFF17120F.toInt())
             sceneView?.let {
+                val w = holder.surfaceFrame.width()
+                val h = holder.surfaceFrame.height()
+                if (w <= 0 || h <= 0) {
+                    holder.unlockCanvasAndPost(canvas)
+                    return
+                }
                 it.measure(
-                    android.view.View.MeasureSpec.makeMeasureSpec(surfaceHolder.surfaceFrame.width(), android.view.View.MeasureSpec.EXACTLY),
-                    android.view.View.MeasureSpec.makeMeasureSpec(surfaceHolder.surfaceFrame.height(), android.view.View.MeasureSpec.EXACTLY)
+                    View.MeasureSpec.makeMeasureSpec(w, View.MeasureSpec.EXACTLY),
+                    View.MeasureSpec.makeMeasureSpec(h, View.MeasureSpec.EXACTLY)
                 )
-                it.layout(0, 0, surfaceHolder.surfaceFrame.width(), surfaceHolder.surfaceFrame.height())
+                it.layout(0, 0, w, h)
                 it.draw(canvas)
             }
-            surfaceHolder.unlockCanvasAndPost(canvas)
+            holder.unlockCanvasAndPost(canvas)
         }
 
         override fun onDestroy() {

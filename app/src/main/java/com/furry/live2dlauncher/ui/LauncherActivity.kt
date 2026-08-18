@@ -238,39 +238,41 @@ class LauncherActivity : AppCompatActivity() {
 
     private fun openFolder(folder: HomeItem.Folder) {
         // 文件夹弹窗：展示内部应用
-        val popup = android.widget.PopupWindow(
-            LinearLayout(this).apply {
-                orientation = LinearLayout.VERTICAL
-                setBackgroundColor(0xEE2A211C.toInt())
-                setPadding(dp(16), dp(16), dp(16), dp(16))
-                folder.appPackages.forEach { pkg ->
-                    val row = LinearLayout(this@LauncherActivity).apply {
-                        orientation = LinearLayout.HORIZONTAL
-                        gravity = android.view.Gravity.CENTER_VERTICAL
-                        setPadding(0, dp(8), 0, dp(8))
-                        isClickable = true
-                        setOnClickListener {
-                            popup.dismiss()
-                            launchApp(pkg)
-                        }
+        lateinit var popup: android.widget.PopupWindow
+        val content = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            setBackgroundColor(0xEE2A211C.toInt())
+            setPadding(dp(16), dp(16), dp(16), dp(16))
+            folder.appPackages.forEach { pkg ->
+                val row = LinearLayout(this@LauncherActivity).apply {
+                    orientation = LinearLayout.HORIZONTAL
+                    gravity = android.view.Gravity.CENTER_VERTICAL
+                    setPadding(0, dp(8), 0, dp(8))
+                    isClickable = true
+                    setOnClickListener {
+                        popup.dismiss()
+                        launchApp(pkg)
                     }
-                    val icon = ImageView(this@LauncherActivity).apply {
-                        setImageDrawable(packageManager.getApplicationIcon(pkg))
-                        layoutParams = LinearLayout.LayoutParams(dp(36), dp(36))
-                    }
-                    val name = TextView(this@LauncherActivity).apply {
-                        text = packageManager.getApplicationLabel(
-                            packageManager.getApplicationInfo(pkg, 0)
-                        )
-                        setTextColor(0xFFFFFFFF.toInt())
-                        textSize = 14f
-                        setPadding(dp(12), 0, 0, 0)
-                    }
-                    row.addView(icon)
-                    row.addView(name)
-                    (this).addView(row)
                 }
-            },
+                val icon = ImageView(this@LauncherActivity).apply {
+                    setImageDrawable(packageManager.getApplicationIcon(pkg))
+                    layoutParams = LinearLayout.LayoutParams(dp(36), dp(36))
+                }
+                val name = TextView(this@LauncherActivity).apply {
+                    text = packageManager.getApplicationLabel(
+                        packageManager.getApplicationInfo(pkg, 0)
+                    )
+                    setTextColor(0xFFFFFFFF.toInt())
+                    textSize = 14f
+                    setPadding(dp(12), 0, 0, 0)
+                }
+                row.addView(icon)
+                row.addView(name)
+                this@apply.addView(row)
+            }
+        }
+        popup = android.widget.PopupWindow(
+            content,
             android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
             android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
             true
