@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 品牌色：Furry 暖橙 -->
+    <color name="brand_orange">#E8612F</color>
+    <color name="brand_orange_dark">#C94E22</color>
+    <color name="brand_teal">#2F9E8F</color>
+
+    <!-- 浅色主题 -->
+    <color name="bg_light">#FBF6F0</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="ink_light">#2A211C</color>
+    <color name="muted_light">#8A7B70</color>
+    <color name="rule_light">#EADFD3</color>
+
+    <!-- 深色主题 -->
+    <color name="bg_dark">#17120F</color>
+    <color name="surface_dark">#241D18</color>
+    <color name="ink_dark">#F5EDE4</color>
+    <color name="muted_dark">#A99A8D</color>
+    <color name="rule_dark">#3A2F27</color>
+
+    <!-- 通用 -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="scrim">#66000000</color>
+    <color name="icon_tint_light">#4A3B31</color>
+    <color name="icon_tint_dark">#E8DCCF</color>
+</resources>

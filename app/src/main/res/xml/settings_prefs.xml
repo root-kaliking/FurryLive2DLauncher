@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/settings_appearance">
+        <ListPreference
+            android:key="theme_mode"
+            android:title="@string/pref_theme_title"
+            android:summary="@string/pref_theme_summary"
+            android:defaultValue="0"
+            android:entries="@array/theme_modes"
+            android:entryValues="@array/theme_mode_values" />
+        <Preference
+            android:key="theme_color"
+            android:title="@string/pref_theme_color_title"
+            android:summary="@string/pref_theme_color_summary"
+            android:icon="@drawable/ic_palette" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_general">
+        <ListPreference
+            android:key="columns"
+            android:title="@string/pref_columns_title"
+            android:defaultValue="4"
+            android:entries="@array/columns_values"
+            android:entryValues="@array/columns_values" />
+        <ListPreference
+            android:key="rows"
+            android:title="@string/pref_rows_title"
+            android:defaultValue="6"
+            android:entries="@array/rows_values"
+            android:entryValues="@array/rows_values" />
+        <ListPreference
+            android:key="page_count"
+            android:title="@string/pref_pages_title"
+            android:defaultValue="3"
+            android:entries="@array/page_count_values"
+            android:entryValues="@array/page_count_values" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_live2d">
+        <Preference
+            android:key="import_model"
+            android:title="@string/pref_import_model_title"
+            android:summary="@string/pref_import_model_summary"
+            android:icon="@drawable/ic_import" />
+        <Preference
+            android:key="github_repo"
+            android:title="@string/pref_github_repo_title"
+            android:summary="@string/pref_github_repo_summary"
+            android:icon="@drawable/ic_github" />
+        <ListPreference
+            android:key="live2d_fps"
+            android:title="@string/pref_fps_title"
+            android:summary="@string/pref_fps_summary"
+            android:defaultValue="30"
+            android:entries="@array/fps_values"
+            android:entryValues="@array/fps_values" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_wallpaper">
+        <ListPreference
+            android:key="wallpaper_fps"
+            android:title="@string/pref_wallpaper_fps_title"
+            android:defaultValue="24"
+            android:entries="@array/fps_values"
+            android:entryValues="@array/fps_values" />
+        <SwitchPreferenceCompat
+            android:key="particles"
+            android:title="@string/pref_particles_title"
+            android:defaultValue="true" />
+        <SwitchPreferenceCompat
+            android:key="light_dots"
+            android:title="@string/pref_light_dots_title"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_audio">
+        <SwitchPreferenceCompat
+            android:key="sound_enable"
+            android:title="@string/pref_sound_enable_title"
+            android:defaultValue="true" />
+        <SwitchPreferenceCompat
+            android:key="sound_touch"
+            android:title="@string/pref_sound_touch_title"
+            android:defaultValue="true" />
+        <SwitchPreferenceCompat
+            android:key="sound_page"
+            android:title="@string/pref_sound_page_title"
+            android:defaultValue="true" />
+        <SwitchPreferenceCompat
+            android:key="sound_icon"
+            android:title="@string/pref_sound_icon_title"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_performance">
+        <SwitchPreferenceCompat
+            android:key="battery_saver"
+            android:title="@string/pref_battery_saver_title"
+            android:summary="@string/pref_battery_saver_summary"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_backup">
+        <Preference
+            android:key="backup"
+            android:title="@string/pref_backup_title"
+            android:icon="@drawable/ic_backup" />
+        <Preference
+            android:key="restore"
+            android:title="@string/pref_restore_title"
+            android:icon="@drawable/ic_restore" />
+    </PreferenceCategory>
+</PreferenceScreen>

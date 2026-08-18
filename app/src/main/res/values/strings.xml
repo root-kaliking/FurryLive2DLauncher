@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Furry Live2D 桌面</string>
+    <string name="widget_clock_name">Furry 时钟</string>
+    <string name="widget_quote_name">Furry 语录</string>
+
+    <!-- 桌面 -->
+    <string name="launcher_hint">上滑打开应用抽屉</string>
+    <string name="drawer_title">应用</string>
+    <string name="drawer_search_hint">搜索应用</string>
+    <string name="folder_untitled">文件夹</string>
+
+    <!-- 设置 -->
+    <string name="settings_title">设置</string>
+    <string name="settings_general">通用</string>
+    <string name="settings_appearance">外观</string>
+    <string name="settings_live2d">Live2D 模型</string>
+    <string name="settings_wallpaper">壁纸</string>
+    <string name="settings_gesture">手势</string>
+    <string name="settings_audio">音效</string>
+    <string name="settings_performance">性能与省电</string>
+    <string name="settings_backup">备份与还原</string>
+
+    <string name="pref_theme_title">UI 主题</string>
+    <string name="pref_theme_summary">跟随系统 / 深色 / 浅色</string>
+    <string name="pref_theme_system">跟随系统</string>
+    <string name="pref_theme_dark">深色</string>
+    <string name="pref_theme_light">浅色</string>
+
+    <string name="pref_columns_title">图标列数</string>
+    <string name="pref_rows_title">图标行数</string>
+    <string name="pref_pages_title">桌面分页数</string>
+    <string name="pref_fps_title">Live2D 帧率</string>
+    <string name="pref_fps_summary">渲染帧率，越低越省电</string>
+    <string name="pref_wallpaper_fps_title">壁纸帧率</string>
+    <string name="pref_battery_saver_title">低电量自动省电</string>
+    <string name="pref_battery_saver_summary">低电量时自动降帧并关闭动态效果</string>
+    <string name="pref_particles_title">漂浮粒子特效</string>
+    <string name="pref_light_dots_title">镜头缓动光点</string>
+    <string name="pref_sound_enable_title">启用音效</string>
+    <string name="pref_sound_touch_title">触摸模型音效</string>
+    <string name="pref_sound_page_title">切换页面音效</string>
+    <string name="pref_sound_icon_title">点击图标音效</string>
+    <string name="pref_gesture_block_title">手势屏蔽区域</string>
+    <string name="pref_gesture_block_summary">屏蔽区域内模型不响应触摸，避免遮挡图标误触</string>
+    <string name="pref_backup_title">一键备份配置</string>
+    <string name="pref_restore_title">一键还原配置</string>
+    <string name="pref_import_model_title">导入 Live2D 模型</string>
+    <string name="pref_import_model_summary">导入本地完整 Live2D 工程文件</string>
+    <string name="pref_github_repo_title">GitHub 素材仓库</string>
+    <string name="pref_github_repo_summary">浏览合规模型素材下载渠道</string>
+    <string name="pref_theme_color_title">主题配色</string>
+    <string name="pref_theme_color_summary">自定义按钮、弹窗、菜单栏颜色</string>
+
+    <string name="backup_success">配置已备份</string>
+    <string name="backup_fail">备份失败</string>
+    <string name="restore_success">配置已还原</string>
+    <string name="restore_fail">还原失败</string>
+    <string name="model_import_success">模型导入成功</string>
+    <string name="model_import_fail">模型导入失败，请检查工程文件完整性</string>
+    <string name="permission_denied">需要存储权限以导入素材</string>
+
+    <string name="scene_pure">纯色</string>
+    <string name="scene_starfield">星空</string>
+    <string name="scene_bedroom">卧室</string>
+    <string name="scene_forest">森林</string>
+    <string name="scene_cyber">赛博街道</string>
+
+    <string name="live2d_placeholder_name">占位兽耳角色</string>
+    <string name="live2d_placeholder_desc">未导入模型时显示的演示角色，导入官方模型后自动替换</string>
+</resources>
